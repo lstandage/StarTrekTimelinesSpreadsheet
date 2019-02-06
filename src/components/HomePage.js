@@ -335,38 +335,38 @@ export class HomePage extends React.Component {
 				// TODO: check if crew is unused (debuff 0)
 			}
 
-			if (newRecommendation) {
-				this.setState({ recommendations: [...this.state.recommendations, newRecommendation] });
-			}
+			//if (newRecommendation) {
+				//this.setState({ recommendations: [...this.state.recommendations, newRecommendation] });
+			//}
 		});
 
-		const neededEquipment = STTApi.getNeededEquipment(
-			{ onlyNeeded: true, onlyFaction: false, cadetable: false, allLevels: false, userText: undefined },
-			[]
-		);
-		let factionBuyable = [];
-		for (let equipment of neededEquipment) {
-			factionBuyable = factionBuyable.concat(
-				equipment.factionSources.map(
-					entry =>
-						`${equipment.equipment.name} for ${entry.cost_amount} ${CONFIG.CURRENCIES[entry.cost_currency].name} in the ${
-							entry.faction.name
-						} shop`
-				)
-			);
-		}
-		if (factionBuyable.length > 0) {
-			recommendations.push({
-				title: 'Needed equipment in the faction shops',
-				icon: Priority.INFO,
-				content: (
-					<p style={{ margin: '0' }}>
-						You can find some needed equipment in the faction shops: <b>{factionBuyable.join(', ')}</b>. Check them out in the 'Factions'
-						tab.
-					</p>
-				)
-			});
-		}
+		// const neededEquipment = STTApi.getNeededEquipment(
+		// 	{ onlyNeeded: true, onlyFaction: false, cadetable: false, allLevels: false, userText: undefined },
+		// 	[]
+		// );
+		// let factionBuyable = [];
+		// for (let equipment of neededEquipment) {
+		// 	factionBuyable = factionBuyable.concat(
+		// 		equipment.factionSources.map(
+		// 			entry =>
+		// 				`${equipment.equipment.name} for ${entry.cost_amount} ${CONFIG.CURRENCIES[entry.cost_currency].name} in the ${
+		// 					entry.faction.name
+		// 				} shop`
+		// 		)
+		// 	);
+		// }
+		// if (factionBuyable.length > 0) {
+		// 	recommendations.push({
+		// 		title: 'Needed equipment in the faction shops',
+		// 		icon: Priority.INFO,
+		// 		content: (
+		// 			<p style={{ margin: '0' }}>
+		// 				You can find some needed equipment in the faction shops: <b>{factionBuyable.join(', ')}</b>. Check them out in the 'Factions'
+		// 				tab.
+		// 			</p>
+		// 		)
+		// 	});
+		// }
 
 		this.state = { recommendations };
 	}
@@ -428,17 +428,6 @@ export class HomePage extends React.Component {
 						<img src={this.props.captainAvatarBodyUrl} height='320px' />
 					</div>
 					<div style={{ gridArea: 'description' }}>
-						<div style={{ float: 'right' }}>
-							{(!STTApi.playerData.patreonData || !STTApi.playerData.patreonData.patron) && (
-								<a href='https://www.patreon.com/bePatron?u=10555637' target='_blank' data-patreon-widget-type='become-patron-button'>
-									<img src='https://c5.patreon.com/external/logo/become_a_patron_button.png' />
-								</a>
-							)}
-							<br />
-							{STTApi.playerData.patreonData && !STTApi.playerData.patreonData.patron && (
-								<a href={STTApi.playerData.patreonData.loginUrl}>Already a supporter? Log in here</a>
-							)}
-						</div>
 
 						<h3>Welcome, {STTApi.playerData.character.display_name}!</h3>
 						<p>DBID {STTApi.playerData.dbid}</p>
