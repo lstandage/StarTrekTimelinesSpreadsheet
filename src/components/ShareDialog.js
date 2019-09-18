@@ -49,13 +49,13 @@ export class ShareDialog extends React.Component {
 								<TextField
 									label='Title:'
 									value={this.state.title}
-									onChanged={(value) => { this.setState({ title: value }) }}
+									onChange={(value) => { this.setState({ title: value }) }}
 								/>
 
 								<TextField
 									label='Description:'
 									value={this.state.description}
-									onChanged={(value) => { this.setState({ description: value }) }}
+									onChange={(value) => { this.setState({ description: value }) }}
 									multiline autoAdjustHeight
 								/>
 							</td>
@@ -69,7 +69,7 @@ export class ShareDialog extends React.Component {
 									{ key: 'L', text: 'To local file' },
 									{ key: 'O', text: 'Online' }
 								]}
-								onChanged={(item) => {
+								onChange={(item) => {
 									this.setState({ exportWhere: item.key });
 								}}
 							/>
@@ -83,7 +83,7 @@ export class ShareDialog extends React.Component {
 									{ key: 'html', text: 'Formatted HTML' },
 									{ key: 'json', text: 'Raw JSON' }
 								]}
-								onChanged={(item) => {
+								onChange={(item) => {
 									this.setState({ exportType: item.key });
 								}}
 							/>
@@ -101,7 +101,7 @@ export class ShareDialog extends React.Component {
 											thumbnail: 'https://bootswatch.com/' + color + '/thumbnail.png'
 										};
 									})}
-									onChanged={(item) => {
+									onChange={(item) => {
 										this.setState({ htmlColorTheme: item.key });
 									}}
 									onRenderOption={(option) => <img src={option.thumbnail} height={80} />}

@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "configure": "node-gyp configure",
-    "build": "node-gyp build",
+    "build": "node-gyp build -j 4",
     "test": "mocha"
   },
   "devDependencies": {

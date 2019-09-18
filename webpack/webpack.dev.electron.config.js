@@ -59,7 +59,7 @@ module.exports = merge(baseConfig, {
 			spawn(
 				'electron',
 				['.', '--remote-debugging-port=9222'],
-				{ shell: true, env: process.env, stdio: 'inherit' }
+				{ shell: true, env: process.env, stdio: 'inherit', removeElectronJunk: true }
 			)
 				.on('close', code => process.exit(0))
 				.on('error', spawnError => console.error(spawnError));
