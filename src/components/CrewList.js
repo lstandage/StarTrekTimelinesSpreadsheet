@@ -42,13 +42,21 @@ export class CrewList extends React.Component {
 		this._isSelected = this._isSelected.bind(this);
 	}
 
-	componentWillReceiveProps(nextProps) {
-		if (nextProps.data !== this.state.items) {
-			this.setState({ items: nextProps.data });
+    static getDerivedStateFromProps(props, state) {
+		if (props.data !== this.state.items) {
+            return { 
+                items: props.data,
+                sorted: this.state.sorted,
+                selection: props.selectedIds? props.selectedIds : new Set()
+            }
 		}
 
-		if (nextProps.selectedIds !== this.state.selection) {
-			this.setState({ selection: nextProps.selectedIds ? nextProps.selectedIds : new Set() });
+		if (props.selectedIds !== this.state.selection) {
+            return {
+                items: this.state.data,
+                sorted: this.state.sorted,
+                selection: props.selectedIds
+            }
 		}
 	}
 
